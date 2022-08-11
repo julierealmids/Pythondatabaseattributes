@@ -81,7 +81,6 @@ class Loan_model(models.Model):
     balance=models.IntegerField()
     duration=models.CharField(max_length=15,default=True)
     interest_rate=models.IntegerField()
-    balance=models.IntegerField()
     status=models.BooleanField(default=True)
 
 class Reward(models.Model):

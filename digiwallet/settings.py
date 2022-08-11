@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wallet',
+    'wallet.apps.WalletConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -84,7 +85,7 @@ DATABASE = {
     'default' :{
         'ENGINE' : 'django.db.backends.postgressql',
         'NAME' : 'myproject',
-        'USER' : 'myprojectuser',
+        'USER' : 'admin',
         'PASSWORD' : 'student',
         'HOST': 'localhost',
         'PORT' : 5432,
