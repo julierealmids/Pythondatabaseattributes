@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wallet.apps.WalletConfig',
-    'rest_framework',
+    # 'wallet.apps.WalletConfig',
+    # 'rest_framework',
+    'wallet'
 ]
 
 MIDDLEWARE = [
