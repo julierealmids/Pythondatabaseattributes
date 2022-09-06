@@ -30,18 +30,16 @@ class Wallet (models.Model):
     balance=models.IntegerField(blank=True) 
     customer=models.OneToOneField(Customer,on_delete= models.CASCADE)
     pin=models.SmallIntegerField(blank=True)
-    currency=models.OneToOneField(Currency,on_delete=models.CASCADE)
+    # currency=models.OneToOneField(Currency,on_delete=models.CASCADE)
     active=models.BooleanField()
     datecreated=models.DateTimeField()
-    def __str__(self):
-        return self.customer
+    
     
 class Account(models.Model):
     account_type=models.CharField(max_length=20,blank=True)
     account_name=models.ForeignKey(Customer,on_delete=models.CASCADE)
     wallet=models.ForeignKey(Wallet,on_delete= models.CASCADE)
-    def __str__(self):
-        return self.account_name
+    
     
 class Third_Party(models.Model):
     full_name=models.CharField(max_length=20,blank=True)
@@ -61,8 +59,7 @@ class Transaction(models.Model):
     third_party=models.ForeignKey(Third_Party,on_delete= models.CASCADE)
     datetime=models.DateTimeField()
     status=models.BooleanField()
-    def __str__(self):
-        return self.account_origin
+    
     
 
 class Card(models.Model):
@@ -72,8 +69,7 @@ class Card(models.Model):
     signature=models.ImageField()
     issuer=models.CharField(max_length=20)
     account=models.ForeignKey(Account,models.CASCADE,blank=True)
-    def __str__(self):
-        return self.security_code
+    
     
 
 class Receipt(models.Model):
@@ -81,7 +77,7 @@ class Receipt(models.Model):
     transaction=models.ForeignKey(Transaction,on_delete=models.CASCADE,blank=True)
     receipt_file=models.FileField(blank=True)
     def __str__(self):
-        return self.receipt
+        return self.transaction.transaction_type
     
 
 class Notification(models.Model):
@@ -89,8 +85,7 @@ class Notification(models.Model):
     message=models.CharField(max_length=40,blank=True)
     status=models.BooleanField()
     image=models.ImageField()
-    def __str__(self):
-        return self.image
+    
     
 
 class Loan_model(models.Model):
@@ -106,7 +101,7 @@ class Loan_model(models.Model):
     interest_rate=models.IntegerField()
     status=models.BooleanField(default=True)
     def __str__(self):
-        return self.wallet
+        return self.loan_type
     
 
 class Reward(models.Model):
@@ -114,6 +109,5 @@ class Reward(models.Model):
     points=models.IntegerField()
     date=models.DateTimeField(auto_now_add=True)
     transaction=models.ForeignKey(Transaction,on_delete=models.CASCADE)
-    def __str__(self):
-        return self.wallet
+    
     
