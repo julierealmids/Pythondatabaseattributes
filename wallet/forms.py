@@ -9,46 +9,46 @@ class CustomerRegistrationForm(forms.ModelForm):
         model=Customer
         fields="__all__"
         
-class RegisterCurrency(forms.ModelForm):
+class CurrencyRegistrationForm(forms.ModelForm):
     class Meta:
         model=Currency
         fields="__all__"
         
-class RegisterWallet(forms.ModelForm):
+class WalletRegistrationForm(forms.ModelForm):
     class Meta:
         model=Wallet
         fields="__all__"
         
-class RegisterAccount(forms.ModelForm):
+class AccountRegistrationForm(forms.ModelForm):
     class Meta:
         model=Account
         fields="__all__"
         
-class RegisterThird_party(forms.ModelForm):
+class Third_partyRegistrationForm(forms.ModelForm):
     class Meta:
         model=Third_Party
         fields="__all__"
-class RegisterTransaction(forms.ModelForm):
+class TransactionRegistrationForm(forms.ModelForm):
     class Meta:
         model=Transaction
         fields="__all__"
-class RegisterCard(forms.ModelsForm):
+class CardRegistrationForm(forms.ModelsForm):
     class Meta:
         model=Card
         feilds="__all__"
-class RegisterReceipt(forms.ModelForms):
+class ReceiptRegistrationForm(forms.ModelForms):
     class Meta:
         model=Receipt
         fields="__all__"
-class RegisterNotification(forms.ModelForms):
+class NotificationRegistrationForm(forms.ModelForms):
     class Meta:
         model=Notification
         fields="__all__"
-class RegisterLoan_model(forms.ModelForms):
+class Loan_modelRegistrationForm(forms.ModelForms):
     class Meta:
         model=Loan_model
         fields="__all__"
-class RegisterReward(forms.ModelForm):
+class RewardRegistrationForm(forms.ModelForm):
     class Meta:
         model=Reward
         fields="__all__"
