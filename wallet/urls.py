@@ -2,7 +2,6 @@ from atexit import register
 from unicodedata import name
 from django.urls import path
 
-from wallet.forms import RegisterWallet
 
 # from wallet.models import wallet
 from .views import register_customer,register_wallet,register_currency,register_account,register_third_party,register_transaction,register_card,register_receipt,register_notification,register_loan_model,register_reward

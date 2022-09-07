@@ -32,19 +32,19 @@ class TransactionRegistrationForm(forms.ModelForm):
     class Meta:
         model=Transaction
         fields="__all__"
-class CardRegistrationForm(forms.ModelsForm):
+class CardRegistrationForm(forms.ModelForm):
     class Meta:
         model=Card
-        feilds="__all__"
-class ReceiptRegistrationForm(forms.ModelForms):
+        fields="__all__"
+class ReceiptRegistrationForm(forms.ModelForm):
     class Meta:
         model=Receipt
         fields="__all__"
-class NotificationRegistrationForm(forms.ModelForms):
+class NotificationRegistrationForm(forms.ModelForm):
     class Meta:
         model=Notification
         fields="__all__"
-class Loan_modelRegistrationForm(forms.ModelForms):
+class Loan_modelRegistrationForm(forms.ModelForm):
     class Meta:
         model=Loan_model
         fields="__all__"
