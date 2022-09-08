@@ -19,11 +19,11 @@ class Loan_modelAdmin(admin.ModelAdmin):
     
 class RewardAdmin(admin.ModelAdmin):
     list_display=("wallet","transaction","points")
-    search_fields=("transaction","points")
+    search_fields=("transaction","points",)
     
 class CardAdmin(admin.ModelAdmin):
     list_display=("account","date_issued","card_status")
-    search_fields=("account","card_status")
+    search_fields=("account","card_status",)
     
 
 admin.site.register(Customer,CustomerAdmin)
