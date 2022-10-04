@@ -1,25 +1,75 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from . import models
+
+from wallet.models import Account, Currency, Customer, Wallet
 from .forms import AccountRegistrationForm, CardRegistrationForm, CurrencyRegistrationForm, CustomerRegistrationForm, Loan_modelRegistrationForm, NotificationRegistrationForm, ReceiptRegistrationForm, RewardRegistrationForm, Third_partyRegistrationForm, TransactionRegistrationForm, WalletRegistrationForm
 
 def register_customer(request):
-    form=CustomerRegistrationForm()
-    return render(request,'wallet/register_customer.html',
+    if request.method == "POST":
+          form = CustomerRegistrationForm(request.POST)
+          if form.is_valid():
+              form.save()
+    else:
+        form = CustomerRegistrationForm()
+        return render(request, 'walletT/register_customer.html',
                   {"form":form})
+def list_customer(request):
+    customers = models.Customer.objects.all()
+    return render (request, 'walletT/customer_list.html',
+                   {"customers":customers})
+def customer_profile(request,id):
+    customers=models.Customer.objects.get(id=id)
+    return render (request, 'walletT/customer_profile.html',
+                   {"customers":customers})
+    
+def edit_customer(request,id):
+    customers=Customer.objects.get(id=id)
+    if request.method=="POST":
+        form = CustomerRegistrationForm(request.POST,instance=customers)
+        if form.is_valid():
+            form.save()
+            return redirect("customer_profile",id=customers.id)
+        else:
+            form=CustomerRegistrationForm(instance=customers)
+            return render(request,"wallet/edit_customer.html",{"form":form})
     
 def register_currency(request):
-    form=CurrencyRegistrationForm()
+    if request.method=="POST":
+        form.CurrencyRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form=CurrencyRegistrationForm()
     return render(request,'wallet/register_currency.html',
                   {"form":form})   
+    
+def list_currency(request):
+    currency=Currency.objects.all()
+    return render(request,"wallet/currency_list.html",{"currency":currency})
 
 def register_wallet(request):
-    form=WalletRegistrationForm()
+    if request.method=="POST":
+        form=WalletRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
     return render(request,'wallet/register_wallet.html',
                   {"form":form})  
-    
+def list_wallet(request):
+    wallet=Wallet.objects.all()
+    return render(request,"wallet/wallet_list.html",{"wallet":wallet})
+
 def register_account(request):
-    form=AccountRegistrationForm()
+    if request.method=="POST":
+        form=AccountRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
     return render(request,'wallet/register_account.html',
-                  {"form":form})  
+                  {"form":form}) 
+    
+def list_account(request):
+        account=Account.objects.all()
+        return render(request,"wallet/account_list.html",{"account":account})
+ 
     
 def register_third_party(request):
     form=Third_partyRegistrationForm()
@@ -56,6 +106,7 @@ def register_reward(request):
     return render(request,'wallet/register_reward.html',
                   {"form":form})     
     
+
 
     
 
