@@ -1,5 +1,6 @@
 from atexit import register
 from unicodedata import name
+from django import views
 from django.urls import path
 
 
@@ -19,11 +20,11 @@ urlpatterns = [
     path("notification/",register_notification,name="registration"),
     path("loan_model/",register_loan_model,name="registration"),
     path("reward/",register_reward,name="registration"),
-    path("list1",list_customers,name="list_customers"),
-    path("customers/<int:1>",Customer_profile,name="Customer_profile"),
-    path("customers/edit/int:id>/,edit_customer,name="edit_customer"),
     
-    # path("wallet/",include("wallet.urls")),
+    path("customers/", views.list_customer, name="list_customers"),
+    path("customers/<int:id>/", views.customer_profile, name="customer_profile"),
+    path("customers/edit/<int:id>/", views.edit_customer, name="edit_customer"),
+    
 ]
 
 
